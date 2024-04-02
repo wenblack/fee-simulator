@@ -1,7 +1,6 @@
 import Chart from "react-google-charts";
 
 interface ChartProps {
-  name: string;
   investido: number;
   totalJuros: number;
   totalGeral: number;
@@ -11,16 +10,11 @@ const BRL = new Intl.NumberFormat("pt-BR", {
   style: "currency",
   currency: "BRL",
 });
-export function ChartCard({
-  name,
-  investido,
-  totalGeral,
-  totalJuros,
-}: ChartProps) {
+export function ChartCard({ investido, totalGeral, totalJuros }: ChartProps) {
   let data = [
     ["", "Juros", "Investido", "Geral"],
     [
-      name,
+      " ",
       BRL.format(totalJuros),
       BRL.format(investido),
       BRL.format(totalGeral),
@@ -29,6 +23,7 @@ export function ChartCard({
   const options = {
     chart: {
       title: "Resultado da Simulação",
+      legend: { position: "none" },
     },
   };
   if (

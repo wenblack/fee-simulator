@@ -177,12 +177,7 @@ export default function Home() {
         </button>
       </form>
       <section className="max-w-4xl mx-auto p-6">
-        <ChartCard
-          name="CDB Inter"
-          investido={income}
-          totalGeral={total}
-          totalJuros={fee}
-        />
+        <ChartCard investido={income} totalGeral={total} totalJuros={fee} />
       </section>
     </main>
   );
