@@ -1,6 +1,10 @@
 "use client";
 import { ChartCard } from "@/components/ChartCard";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 export default function Home() {
   const [income, setIncome] = useState(0);
@@ -27,7 +31,11 @@ export default function Home() {
       tempoMeses === 0 ||
       aporteMensal === 0
     ) {
-      alert("Por favor preencha todos os campos");
+      MySwal.fire({
+        title: <p>Por favor , preencha todos os campos</p>,
+        icon: "warning",
+        showConfirmButton: false,
+      });
       return;
     }
     tempoMeses = tempoMeses * multiplier;
