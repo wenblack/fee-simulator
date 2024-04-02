@@ -95,6 +95,7 @@ export default function Home() {
               aria-describedby="initial-investment-help"
               className="shadow-md hover:ring-2  w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
               type="number"
+              pattern="[0-9]"
               min={100}
               placeholder="0,00"
               onChange={(e) => {
@@ -115,6 +116,7 @@ export default function Home() {
               aria-describedby="monthly-contribution-help"
               className="shadow-md hover:ring-2  w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
               type="number"
+              pattern="[0-9]"
               min={100}
               placeholder="0,00"
               onChange={(e) => {
@@ -133,9 +135,10 @@ export default function Home() {
               id="interest-rate"
               aria-label="Interest Rate"
               aria-describedby="interest-rate-help"
+              pattern="[0-9]+\.[0-9]+"
               className="shadow-md hover:ring-2  w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
               type="text"
-              placeholder="0,00"
+              placeholder="0.85"
               onChange={(e) => {
                 setFeeTaxes(Number(e.target.value));
               }}
@@ -155,6 +158,7 @@ export default function Home() {
                 aria-describedby="time-help"
                 className="w-full shadow-md hover:ring-2  px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
                 type="number"
+                pattern="[0-9]"
                 min={1}
                 placeholder="0"
                 onChange={(e) => {
