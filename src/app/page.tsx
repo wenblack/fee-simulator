@@ -134,7 +134,7 @@ export default function Home() {
               aria-label="Interest Rate"
               aria-describedby="interest-rate-help"
               className="shadow-md hover:ring-2  w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
-              type="number"
+              type="text"
               placeholder="0,00"
               onChange={(e) => {
                 setFeeTaxes(Number(e.target.value));
