@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+  Compound Interest Calculator (Fee Simulator)
+</h1>
 
-## Getting Started
+<p align="center">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/EliasGcf/readme-template">
+  <a href="https://www.linkedin.com/in/eliasgcf/">
+    <img alt="Made by" src="https://img.shields.io/badge/made%20by-Wen%20Barbosa-gree">
+  </a>
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/EliasGcf/readme-template">
+  <a href="https://github.com/EliasGcf/readme-template/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/EliasGcf/readme-template">
+  </a>
+  <a href="https://github.com/EliasGcf/readme-template/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/EliasGcf/readme-template">
+  </a>
+  <img alt="GitHub" src="https://img.shields.io/github/license/EliasGcf/readme-template">
+</p>
 
-First, run the development server:
+<p align="center">
+  <a href="#-about-the-project">About the project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-getting-started">Getting started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-how-to-contribute">How to contribute</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-license">License</a>
+</p>
+
+## 👨🏻‍💻 About the project
+
+- <p style="color: red;">This is a compound interest calculator built with Next.js, React, TypeScript, Tailwind CSS, SweetAlert2, and React Google Charts.
+  </p>
+
+## 🚀 Technologies
+
+Technologies that I used to develop this web client
+
+- [React](https://react.dev/) : JavaScript library for building user interfaces.
+- [NextJs](https://nextjs.org/) : The React framework for production.
+- [Typescript](https://www.typescriptlang.org/) : Typed superset of JavaScript that compiles to plain JavaScript.
+- [Tailwind CSS](https://tailwindcss.com/) : Utility-first CSS framework for rapid UI development.
+- [SweetAlert2](https://sweetalert2.github.io/) : Beautiful, responsive, and customizable alerts.
+- [React Google Charts](https://www.react-google-charts.com/) : Wrapper for Google Charts to integrate charts into React applications.
+
+## 💻 Getting started
+
+**Clone the project and access the folder**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+$ git clone https://github.com/EliasGcf/NOME_DO_REPO.git && cd NOME_DO_REPO
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Follow the steps below**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Install the dependencies
+$ yarn
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# Start the client
+$ yarn dev
+```
 
-## Learn More
+## 🤔 How to contribute
 
-To learn more about Next.js, take a look at the following resources:
+**Make a fork of this repository**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# Fork using GitHub official command line
+# If you don't have the GitHub CLI, use the web site to do that.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+$ gh repo fork EliasGcf/NOME_DO_REPO
+```
 
-## Deploy on Vercel
+**Follow the steps below**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# Clone your fork
+$ git clone your-fork-url && cd NOME_DO_REPO
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Create a branch with your feature
+$ git checkout -b my-feature
+
+# Make the commit with your changes
+$ git commit -m 'feat: My new feature'
+
+# Send the code to your remote branch
+$ git push origin my-feature
+```
+
+After your pull request is merged, you can delete your branch
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+Made with 💜 &nbsp;by Wen Barbosa 👋 &nbsp;[See my linkedin](https://www.linkedin.com/in/wender-jose-santos-4b1473217/)
