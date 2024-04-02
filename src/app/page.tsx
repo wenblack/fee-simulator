@@ -68,70 +68,122 @@ export default function Home() {
             monthMultiplier
           );
         }}
+        className="max-w-4xl mx-auto mt-5 p-6 bg-white rounded-md shadow-md"
       >
-        <fieldset>
-          <legend>Simulador de Juros Compostos</legend>
-          <label htmlFor="start value">Valor inicial</label>
-          <input
-            type="number"
-            name="start value"
-            id="start value"
-            placeholder="0,00"
-            onChange={(e) => {
-              setStartIncome(Number(e.target.value));
-            }}
-          />
-          <label htmlFor="month value">Valor mensal</label>
-          <input
-            type="number"
-            name="month value"
-            id="month value"
-            placeholder="0,00"
-            onChange={(e) => {
-              setMonthIncome(Number(e.target.value));
-            }}
-          />
-          <label htmlFor="fee">Taxa de juros</label>
-          <input
-            type="number"
-            name="fee"
-            id="fee"
-            placeholder="0,00"
-            onChange={(e) => {
-              setFeeTaxes(Number(e.target.value));
-            }}
-          />
-          <label htmlFor="time">Período em:</label>
-          <input
-            type="number"
-            name="time"
-            id="time"
-            placeholder="0"
-            onChange={(e) => {
-              setMonths(Number(e.target.value));
-            }}
-          />
-          <select
-            name=""
-            id=""
-            onChange={(e) => {
-              setMonthMultiplier(Number(e.target.value));
-            }}
-          >
-            <option label="Selecione" value={undefined} defaultChecked />
-            <option value="1" label="meses"></option>
-            <option value="12" label="anos"></option>
-          </select>
-        </fieldset>
-        <input type="submit" value="Calcular" />
+        <h1 className="text-2xl font-bold mb-6 text-center">
+          Simulador de Investimentos
+        </h1>
+        <div className="grid sm:grid-cols-2 gap-8">
+          <div>
+            <label
+              htmlFor="initial-investment"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Aporte Inicial:
+            </label>
+            <input
+              id="initial-investment"
+              aria-label="Initial Investment"
+              aria-describedby="initial-investment-help"
+              className="shadow-md hover:ring-2  w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
+              type="number"
+              min={100}
+              placeholder="0,00"
+              onChange={(e) => {
+                setStartIncome(Number(e.target.value));
+              }}
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="monthly-contribution"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Aporte Mensal:
+            </label>
+            <input
+              id="monthly-contribution"
+              aria-label="Monthly Contribution"
+              aria-describedby="monthly-contribution-help"
+              className="shadow-md hover:ring-2  w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
+              type="number"
+              min={100}
+              placeholder="0,00"
+              onChange={(e) => {
+                setMonthIncome(Number(e.target.value));
+              }}
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="interest-rate"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Taxa de Juros:
+            </label>
+            <input
+              id="interest-rate"
+              aria-label="Interest Rate"
+              aria-describedby="interest-rate-help"
+              className="shadow-md hover:ring-2  w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
+              type="number"
+              min={1}
+              placeholder="0,00"
+              onChange={(e) => {
+                setFeeTaxes(Number(e.target.value));
+              }}
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="time"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Período:
+            </label>
+            <span className="flex">
+              <input
+                id="time"
+                aria-label="Time"
+                aria-describedby="time-help"
+                className="w-full shadow-md hover:ring-2  px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
+                type="number"
+                min={1}
+                placeholder="0"
+                onChange={(e) => {
+                  setMonths(Number(e.target.value));
+                }}
+              />
+              <select
+                className="w-full shadow-md hover:ring-2  py-2 pl-3 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
+                onChange={(e) => {
+                  setMonthMultiplier(Number(e.target.value));
+                }}
+                name=""
+                id=""
+              >
+                <option label="Selecione" value={undefined} defaultChecked />
+                <option value="1" label="Meses"></option>
+                <option value="12" label="Anos"></option>
+              </select>
+            </span>
+          </div>
+        </div>
+        <button
+          type="submit"
+          className="mt-4 bg-blue-500 focus:ring-1 ring-blue-800 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          Calcular
+        </button>
       </form>
-
-      <ChartCard
-        name="CDB Inter"
-        investido={income}
-        totalGeral={total}
-        totalJuros={fee}
-      />
+      <section className="max-w-4xl mx-auto p-6">
+        <ChartCard
+          name="CDB Inter"
+          investido={income}
+          totalGeral={total}
+          totalJuros={fee}
+        />
+      </section>
     </main>
   );
 }

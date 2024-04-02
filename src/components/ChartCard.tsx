@@ -43,7 +43,7 @@ export function ChartCard({
       chartType="Bar"
       width="100%"
       className="font-medium"
-      height="400px"
+      height="300px"
       data={data}
       options={options}
     />
