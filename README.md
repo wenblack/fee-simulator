@@ -3,18 +3,18 @@
 </h1>
 
 <p align="center">
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/EliasGcf/readme-template">
-  <a href="https://www.linkedin.com/in/eliasgcf/">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/wenblack/fee-simulator">
+  <a href="https://www.linkedin.com/in/wender-jose-santos-4b1473217/">
     <img alt="Made by" src="https://img.shields.io/badge/made%20by-Wen%20Barbosa-gree">
   </a>
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/EliasGcf/readme-template">
-  <a href="https://github.com/EliasGcf/readme-template/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/EliasGcf/readme-template">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/wenblack/fee-simulator">
+  <a href="https://github.com/wenblack/fee-simulator/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/wenblack/fee-simulator">
   </a>
-  <a href="https://github.com/EliasGcf/readme-template/issues">
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/EliasGcf/readme-template">
+  <a href="https://github.com/wenblack/fee-simulator/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/wenblack/fee-simulator">
   </a>
-  <img alt="GitHub" src="https://img.shields.io/github/license/EliasGcf/readme-template">
+  <img alt="GitHub" src="https://img.shields.io/github/license/wenblack/fee-simulator">
 </p>
 
 <p align="center">
@@ -46,7 +46,7 @@ Technologies that I used to develop this web client
 **Clone the project and access the folder**
 
 ```bash
-$ git clone https://github.com/EliasGcf/NOME_DO_REPO.git && cd NOME_DO_REPO
+$ git clone https://github.com/wenblack/fee-simulator.git && cd fee-simulator
 ```
 
 **Follow the steps below**
@@ -67,14 +67,14 @@ $ yarn dev
 # Fork using GitHub official command line
 # If you don't have the GitHub CLI, use the web site to do that.
 
-$ gh repo fork EliasGcf/NOME_DO_REPO
+$ gh repo fork https://github.com/wenblack/fee-simulator
 ```
 
 **Follow the steps below**
 
 ```bash
 # Clone your fork
-$ git clone your-fork-url && cd NOME_DO_REPO
+$ git clone https://github.com/wenblack/fee-simulator && cd fee-simulator
 
 # Create a branch with your feature
 $ git checkout -b my-feature
