@@ -16,20 +16,23 @@ export default function Home() {
   const [months, setMonths] = useState(0);
   const [reloadPage, setItReloadPage] = useState(false);
   const [monthMultiplier, setMonthMultiplier] = useState(0);
+  const [typeOfFee, setTypeOfFee] = useState(0);
 
   function calcularJurosCompostos(
     aporteInicial: number,
     aporteMensal: number,
     taxaJurosMensal: number,
     tempoMeses: number,
-    multiplier: number
+    multiplier: number,
+    period: number
   ) {
     if (
       multiplier === 0 ||
       aporteInicial === 0 ||
       taxaJurosMensal === 0 ||
       tempoMeses === 0 ||
-      aporteMensal === 0
+      aporteMensal === 0 ||
+      period === 0
     ) {
       MySwal.fire({
         title: <p>Por favor , preencha todos os campos</p>,
@@ -39,6 +42,7 @@ export default function Home() {
       return;
     }
     tempoMeses = tempoMeses * multiplier;
+    taxaJurosMensal = taxaJurosMensal / period;
     let taxaDecimal = Number(taxaJurosMensal / 100);
     let montanteFinal = Number(
       aporteInicial * Math.pow(1 + taxaDecimal, tempoMeses)
@@ -73,7 +77,8 @@ export default function Home() {
             monthIncome,
             feeTaxes,
             months,
-            monthMultiplier
+            monthMultiplier,
+            typeOfFee
           );
         }}
         className="max-w-4xl mx-auto mt-5 p-6 bg-white rounded-md shadow-md"
@@ -129,20 +134,33 @@ export default function Home() {
               htmlFor="interest-rate"
               className="block text-gray-700 text-sm font-bold mb-2"
             >
-              Taxa de Juros (Mensal):
+              Taxa de Juros (%):
             </label>
-            <input
-              id="interest-rate"
-              aria-label="Interest Rate"
-              aria-describedby="interest-rate-help"
-              pattern="[0-9]+\.[0-9]+"
-              className="shadow-md hover:ring-2  w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
-              type="text"
-              placeholder="0.85"
-              onChange={(e) => {
-                setFeeTaxes(Number(e.target.value));
-              }}
-            />
+            <span className="flex">
+              <input
+                id="interest-rate"
+                aria-label="Interest Rate"
+                aria-describedby="interest-rate-help"
+                pattern="[0-9]+\.[0-9]+"
+                className="shadow-md hover:ring-2  w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
+                type="text"
+                placeholder="0.85"
+                onChange={(e) => {
+                  setFeeTaxes(Number(e.target.value));
+                }}
+              />
+              <select
+                className="w-full shadow-md hover:ring-2  py-2 pl-3 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
+                onChange={(e) => {
+                  setTypeOfFee(Number(e.target.value));
+                }}
+              >
+                <option label="Selecione" value={undefined} defaultChecked />
+                <option value="1" label="Mensal"></option>
+                <option value="6" label="Semestral"></option>
+                <option value="12" label="Anual"></option>
+              </select>
+            </span>
           </div>
           <div>
             <label
