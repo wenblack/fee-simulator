@@ -17,6 +17,8 @@ export default function Home() {
   const [reloadPage, setItReloadPage] = useState(false);
   const [monthMultiplier, setMonthMultiplier] = useState(0);
   const [typeOfFee, setTypeOfFee] = useState(0);
+  const [hasTaxes, setHasTaxes] = useState(false);
+  const [discount, setDiscount] = useState(0);
 
   function calcularJurosCompostos(
     aporteInicial: number,
@@ -41,28 +43,59 @@ export default function Home() {
       });
       return;
     }
-    tempoMeses = tempoMeses * multiplier;
-    taxaJurosMensal = taxaJurosMensal / period;
-    let taxaDecimal = Number(taxaJurosMensal / 100);
-    let montanteFinal = Number(
-      aporteInicial * Math.pow(1 + taxaDecimal, tempoMeses)
-    );
-    montanteFinal +=
-      aporteMensal *
-      ((Math.pow(1 + taxaDecimal, tempoMeses) - 1) / taxaDecimal);
-    montanteFinal = (montanteFinal * 100) / 100;
-    let investido = Number(aporteInicial + aporteMensal * (tempoMeses - 1));
 
-    setFee(montanteFinal - investido);
-    setIncome(investido);
-    setTotal(montanteFinal);
-    setItReloadPage(true);
+    if (hasTaxes) {
+      tempoMeses = tempoMeses * multiplier;
+      taxaJurosMensal = taxaJurosMensal / period;
+      let taxaDecimal = Number(taxaJurosMensal / 100);
+      let aliquota;
+      if (tempoMeses > 24) {
+        aliquota = 15;
+        console.log(aliquota);
+      } else if (tempoMeses > 12) {
+        aliquota = 17;
+        console.log(aliquota);
+      } else if (tempoMeses > 6) {
+        aliquota = 20;
+        console.log(aliquota);
+      } else {
+        aliquota = 22.5;
+        console.log(aliquota);
+      }
 
-    console.log(`Resultado:
-    Total investido: R$ ${Number(investido).toFixed(2)}
-    Total de Juros : R$ ${Number(montanteFinal - investido).toFixed(2)}
-    Total ganho: R$ ${Number(montanteFinal).toFixed(2)} 
-    `);
+      let montanteFinal = Number(
+        aporteInicial * Math.pow(1 + taxaDecimal, tempoMeses)
+      );
+      montanteFinal +=
+        aporteMensal *
+        ((Math.pow(1 + taxaDecimal, tempoMeses) - 1) / taxaDecimal);
+      montanteFinal = (montanteFinal * 100) / 100;
+      let investido = Number(aporteInicial + aporteMensal * (tempoMeses - 1));
+
+      setFee(montanteFinal - investido);
+      setDiscount((aliquota / 100) * fee);
+      setIncome(investido);
+      setTotal(montanteFinal - discount);
+      setItReloadPage(true);
+    } else {
+      tempoMeses = tempoMeses * multiplier;
+      taxaJurosMensal = taxaJurosMensal / period;
+      let taxaDecimal = Number(taxaJurosMensal / 100);
+      let montanteFinal = Number(
+        aporteInicial * Math.pow(1 + taxaDecimal, tempoMeses)
+      );
+      montanteFinal +=
+        aporteMensal *
+        ((Math.pow(1 + taxaDecimal, tempoMeses) - 1) / taxaDecimal);
+      montanteFinal = (montanteFinal * 100) / 100;
+      let investido = Number(aporteInicial + aporteMensal * (tempoMeses - 1));
+
+      setFee(montanteFinal - investido);
+      setIncome(investido);
+      setTotal(montanteFinal);
+      setDiscount(0);
+      setItReloadPage(true);
+    }
   }
 
   useEffect(() => {}, [reloadPage]);
@@ -198,15 +231,48 @@ export default function Home() {
             </span>
           </div>
         </div>
-        <button
-          type="submit"
-          className="mt-4 bg-blue-500 focus:ring-1 ring-blue-800 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
-          Calcular
-        </button>
+        <section className=" flex w-full items-center justify-between">
+          <button
+            type="submit"
+            onClick={(e) => {
+              e.preventDefault();
+              calcularJurosCompostos(
+                startIncome,
+                monthIncome,
+                feeTaxes,
+                months,
+                monthMultiplier,
+                typeOfFee
+              );
+            }}
+            className="mt-4 bg-blue-500 focus:ring-1 ring-blue-800 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Calcular
+          </button>
+          <div
+            onChange={(value: any) => {
+              if (value.target.checked === true) {
+                setHasTaxes(true);
+                console.log(hasTaxes);
+              } else {
+                setHasTaxes(false);
+                console.log(hasTaxes);
+              }
+            }}
+            className="flex self-end items-center justify-center gap-2"
+          >
+            <input type="checkbox" id="horns" name="horns" />
+            <label htmlFor="horns"> Calcular IR</label>
+          </div>
+        </section>
       </form>
       <section className="max-w-4xl mx-auto p-6">
-        <ChartCard investido={income} totalGeral={total} totalJuros={fee} />
+        <ChartCard
+          desconto={discount}
+          investido={income}
+          totalGeral={total}
+          totalJuros={fee}
+        />
       </section>
     </main>
   );
